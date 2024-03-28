@@ -1,0 +1,65 @@
+/* font face */
+
+@font-face {
+  font-family: IRANsans;
+  src: url("../../../public/assets/fonts/IRANSans.woff2");
+}
+
+/* form */
+
+.form-main {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.form-control {
+  width: auto;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* input */
+
+.form-control input {
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  font-family: IRANsans;
+  font-size: 1.2rem;
+}
+
+.form-control input:focus {
+  outline: none;
+}
+
+.input-valid {
+  border-color: #03a9f4;
+}
+
+.input-invalid {
+  border-color: rgb(from color r g b);
+}
+
+/* button */
+
+.btn-submit {
+  box-shadow: 0 0 7px rgb(85, 85, 85);
+  background-color: #03a9f4;
+  font-family: IRANsans;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  border: none;
+}
+
+/* error */
+
+.error-control {
+  height: 14px;
+  padding: 3px 16px;
+}
