@@ -14,6 +14,10 @@
   align-items: center;
 }
 
+.form-main * {
+  font-family: IRANsans;
+}
+
 .form-control {
   width: auto;
   display: flex;
@@ -28,20 +32,22 @@
   padding: 0.5rem;
   border: none;
   border-bottom: 1px solid #aaa;
-  font-family: IRANsans;
+  transition: border 0.1s;
   font-size: 1.2rem;
 }
 
 .form-control input:focus {
+  border-bottom-color: #03a9f4;
+  transition: all 0.1s;
   outline: none;
 }
 
 .input-valid {
-  border-color: #03a9f4;
 }
 
 .input-invalid {
-  border-color: rgb(from color r g b);
+  border-bottom-color: #c62828 !important;
+  transition: all 0.1s;
 }
 
 /* button */
@@ -49,7 +55,6 @@
 .btn-submit {
   box-shadow: 0 0 7px rgb(85, 85, 85);
   background-color: #03a9f4;
-  font-family: IRANsans;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
@@ -60,6 +65,10 @@
 /* error */
 
 .error-control {
-  height: 14px;
+  font-size: 0.7rem;
+  height: 20px;
+  text-align: right;
   padding: 3px 16px;
+  color: #c62828;
+  box-sizing: border-box;
 }

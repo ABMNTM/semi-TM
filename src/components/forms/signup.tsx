@@ -1,50 +1,89 @@
-import React, { useEffect, useReducer, useState } from "react";
-import { PropType, StateType, ActionType, PasswordStateType } from "./types";
+import React, { useState } from "react";
 import styles from "./signup.module.css";
-import UsernameInput from "./signup/UsernameInput";
-import EmailInput from "./signup/EmailInput";
-import PasswordInput from "./signup/PasswordInput";
+import axios from "axios";
 
 const SignUp = () => {
   // states
-  const [formIsValid, setFormIsValid] = useState(false);
-  const [usernameValidate, setUsernameValidate] = useState(false);
-  const [emailValidate, setEmailValidate] = useState(false);
-  const [passwordValidate, setPasswordValidate] = useState(false);
 
-  // form validate
-  useEffect(() => {
-    setFormIsValid(usernameValidate && emailValidate && passwordValidate);
-  }, [usernameValidate, emailValidate, passwordValidate]);
+  const [username, setUsername] = useState("");
 
-  // change handle
-  const HandleUsernameChange = (val: boolean) => {
-    setUsernameValidate(val);
+  const [email, setEmail] = useState("");
+
+  const [password, setPassword] = useState("");
+
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  // handle changes
+
+  const HandleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.target.value);
   };
 
-  const HandleEmailChange = (val: boolean) => {
-    setEmailValidate(val);
+  const HandleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
   };
 
-  const HandlePasswordChange = (val: boolean) => {
-    setPasswordValidate(val);
+  const HandlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const HandleConfPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setConfirmPassword(e.target.value);
   };
 
   // submit handle
   const HandleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    axios
+      .post("account/create/", {
+        username: username,
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword,
+      })
+      .then((response) => {})
+      .catch();
   };
 
   return (
     <>
       <form dir="rtl" onSubmit={HandleSubmit} className={styles["form-main"]}>
         <div className={styles["form-control"]}>
-          <UsernameInput onChange={HandleUsernameChange} />
+          <input
+            onChange={HandleUsernameChange}
+            placeholder="نام کاربری، مانند Azem ..."
+            type="text"
+            name="username"
+          />
+          <div className={styles["error-control"]}>{}</div>
         </div>
         <div className={styles["form-control"]}>
-          <EmailInput onChange={HandleEmailChange} />
+          <input
+            onChange={HandleEmailChange}
+            placeholder="ایمیل، مانند Azem@example.com ..."
+            type="text"
+            name="username"
+          />
+          <div className={styles["error-control"]}></div>
         </div>
-        <PasswordInput onChange={HandlePasswordChange} />
+        <div className={styles["form-control"]}>
+          <input
+            onChange={HandlePasswordChange}
+            placeholder="گذرواژه"
+            type="password"
+            name="password"
+          />
+          <div className={styles["error-control"]}></div>
+        </div>
+        <div className={styles["form-control"]}>
+          <input
+            onChange={HandleConfPasswordChange}
+            placeholder="تأیید گذرواژه"
+            type="password"
+            name="confirm-password"
+          />
+          <div className={styles["error-control"]}></div>
+        </div>
         <button className={styles["btn-submit"]} type="submit">
           ورود
         </button>
