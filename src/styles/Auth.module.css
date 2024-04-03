@@ -1,0 +1,116 @@
+.aside {
+  background-image: url("../../public/assets/splash.png"),
+    linear-gradient(to bottom left, #49c3c9, #249bd6 50%, #0c5b9c);
+  width: 51vw;
+  height: 100vh;
+  background-color: #0098db;
+  background-size: 200vh auto;
+  background-position: 0 100%, 100% 0;
+  flex: 0 0 50%;
+  background-repeat: no-repeat;
+  direction: rtl;
+}
+
+.auth-container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 30px;
+}
+
+.OAuth-group {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  /* align-items: stretch; */
+}
+
+.OAuth-group {
+  margin-top: 15px;
+}
+
+.OAuth-group a {
+  width: 100%;
+}
+
+.google,
+.github {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  border-radius: 2px;
+  font-weight: 500;
+  outline: none !important;
+}
+
+.google svg,
+.github img {
+  margin-left: 20px;
+}
+
+.google {
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.github {
+  background-color: #444;
+  color: #eee;
+}
+
+.logo i {
+  background-image: url(/public/assets/github-mark-white.svg);
+}
+
+.alongmain {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 49vw;
+  height: 100vh;
+}
+
+.forgetPassword {
+  text-align: center;
+  color: #21a8e2;
+  font-size: 0.8rem;
+}
+
+.callUs {
+  text-align: center;
+  color: #888;
+  font-size: 0.8rem;
+}
+
+#logo {
+  align-self: flex-end;
+}
+
+#logo img {
+  width: 153px;
+  height: 32px;
+}
+
+.main {
+  display: flex;
+}
+
+.header3 {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 2.5rem 14vw 0 0;
+}
+
+.header5 {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: 0.3rem 14vw 0 0;
+}
