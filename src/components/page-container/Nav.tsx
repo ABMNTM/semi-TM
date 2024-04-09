@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
+import Switch from "@cmp/UI/Switch";
 
 import styles from "./Nav.module.css";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -14,15 +15,20 @@ const Nav = () => {
           <FontAwesomeIcon icon={faPlus} />
         </button> */}
         صفحه اصلی
-        <FontAwesomeIcon icon={faHome} className={styles.textIcon} />
+        <FontAwesomeIcon
+          icon={faHome}
+          width={20}
+          height={20}
+          className={styles.textIcon}
+        />
       </div>
       <div className={styles.leftHeader}>
-        <button className={styles.btnToggle}></button>
+        <Switch />
         <div>
           <input type="text" name="search" placeholder="جستجوی پروژه ها" />
         </div>
         <div className={styles.avatar}>
-          <Avatar />
+          <Avatar status="dot" />
         </div>
       </div>
     </nav>

@@ -15,12 +15,18 @@
   padding: 10px;
 }
 
+.projectContainer {
+  display: flex;
+  flex-flow: row-reverse wrap;
+  gap: 25px;
+}
+
 .boardHeader {
   display: flex;
   flex-flow: row-reverse nowrap;
   justify-content: flex-start;
+  gap: 30px;
   align-items: center;
-  margin-right: 10px;
   padding: 1rem 0;
 }
 
@@ -28,6 +34,20 @@
   margin-left: 10px;
 }
 
-.boardHeader h4 {
+.boardTitle {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.2rem;
   padding-top: 4px;
+}
+
+.createProject {
+  color: #0d8aee;
+
+  border: none;
 }

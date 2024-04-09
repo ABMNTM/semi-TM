@@ -38,6 +38,12 @@ const BoardContainer = () => {
             description: "test",
             date_created: new Date(),
           },
+          {
+            id: 3,
+            name: "Azemubu",
+            description: "test",
+            date_created: new Date(),
+          },
         ],
       },
       {
@@ -96,8 +102,13 @@ const BoardContainer = () => {
         {data.map((item) => (
           <div key={item.id}>
             <div key={item.id} className={styles.boardHeader}>
-              <FontAwesomeIcon icon={faBuilding} />
-              <h4>{item.name}</h4>
+              <div className={styles.boardTitle}>
+                <FontAwesomeIcon icon={faBuilding} width={20} height={20} />
+                <h3 className={styles.title}>{item.name}</h3>
+              </div>
+              <button className={styles.createProject}>ایجاد پروژه</button>
+              <div className={styles.setting}></div>
+              <div className={styles.analyse}></div>
             </div>
             <div key={item.id} className={styles.projectContainer}>
               {item.projects.map((item) => (

@@ -4,9 +4,16 @@
   justify-content: flex-start;
   align-items: stretch;
   background-color: white;
-  box-shadow: 0 0 3 3px #aaa;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
   width: 300px;
   height: 150px;
+  transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.container:hover {
+  background-color: #f5f5f5;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+  transition: background-color 0.07s ease-out, box-shadow 0.07s ease-out;
 }
 
 .header {
@@ -14,11 +21,12 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  padding: 0.7rem 1rem;
-  border-bottom: 1px solid #aaa;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #eee;
 }
 
 .header h3 {
+  font-weight: 300;
   padding-top: 3px;
   margin-left: 10px;
 }

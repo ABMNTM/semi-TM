@@ -3,12 +3,22 @@ import Image from "next/image";
 
 import styles from "./Avatar.module.css";
 
-const Avatar = () => {
-  return (
-    <>
-      <div className={styles.avatar}>AB</div>
-    </>
+interface propType {
+  status: string;
+}
+
+const Avatar = (props: propType) => {
+  const border = <div className={`${styles.avatar} ${styles.border}`}>AB</div>;
+
+  const dot = (
+    <div className={styles.avatar}>
+      <div className={styles.dot}></div>AB
+    </div>
   );
+
+  const contentWithStatus =
+    props.status === "dot" ? dot : props.status === "border" ? border : null;
+  return <>{contentWithStatus}</>;
 };
 
 export default Avatar;

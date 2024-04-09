@@ -16,11 +16,11 @@ const ProjectCard = (props: propType) => {
     <>
       <Link className={styles.container} href={projectLink}>
         <div className={styles.header}>
-          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} width={20} height={20} />
           <h3>{props.title}</h3>
         </div>
         <div className={styles.body}>
-          <Avatar />
+          <Avatar status="border" />
         </div>
       </Link>
     </>
