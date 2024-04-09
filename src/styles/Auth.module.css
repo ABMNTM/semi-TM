@@ -53,8 +53,12 @@
   margin-left: 20px;
 }
 
-.google {
+.googleContainer {
   margin-bottom: 30px;
+}
+
+.google {
+  color: #999;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
