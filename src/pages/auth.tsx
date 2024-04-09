@@ -39,7 +39,7 @@ export default function Home() {
           <div className={styles["auth-container"]}>
             {mainForm}
             <div className={styles["OAuth-group"]}>
-              <Link href={"/oauth1"}>
+              <Link className={styles.googleContainer} href={"/oauth1"}>
                 <div className={styles.google}>
                   اتصال با گوگل
                   <svg
