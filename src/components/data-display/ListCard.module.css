@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 20px;
+  position: relative;
+  padding: 1rem;
+  box-sizing: content-box;
+  background-color: aliceblue;
+}
+
+.header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  background-color: aqua;
+}
+
+.taskHeader {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  background-color: pink;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: aquamarine;
+}
+
+.task {
+  padding: 0.7rem 1rem;
+  background-color: azure;
+}
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.red {
+  background-color: red;
+}
+
+.dragdropIcon {
+  position: absolute;
+  right: 0;
+  top: 1rem;
+}
