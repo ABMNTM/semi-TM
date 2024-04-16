@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import styles from "./ListCard.module.css";
-import { faGrip } from "@fortawesome/free-solid-svg-icons";
+import { faGear, faGrip, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faGripVertical } from "@fortawesome/free-solid-svg-icons/faGripVertical";
 
 export interface taskType {
@@ -19,8 +19,6 @@ interface TaskTempType {
 
 interface propType {
   title: string;
-  width: number;
-  height: number;
   tasks: Array<taskType>;
 }
 
@@ -35,45 +33,57 @@ const ListCard = (props: propType) => {
 
   return (
     <>
-      <div
-        style={{ width: props.width, height: props.height }}
-        className={styles.container}
-      >
+      <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.dragdropIcon}>
-            <FontAwesomeIcon icon={faGripVertical} />
+            <FontAwesomeIcon icon={faGripVertical} width={"9px"} />
           </div>
-          <h4 className={styles.title}>{props.title}</h4>
-          <div className={styles.settingIcon}>S</div>
+          <h3 className={styles.title}>{props.title}</h3>
+          <div className={styles.settingIcon}>
+            <FontAwesomeIcon icon={faGear} />
+          </div>
         </div>
         <div className={styles.tasks}>
           <div className={styles.taskHeader}>
-            <div>({todos.length}) Todo</div>
+            <div className={styles.taskTitle}>
+              <i>({todos.length})</i> Todo
+            </div>
+            <div className={styles.AddTaskIcon}>
+              <FontAwesomeIcon icon={faPlus} />
+            </div>
           </div>
           {todos.map((todo) => (
             <TaskTemp key={todo.id} title={todo.title} />
           ))}
-          <div className={`${styles.statusBar} ${styles.red}`} />
+          {/* <div className={`${styles.statusBar} ${styles.red}`} /> */}
         </div>
         <div className={styles.tasks}>
           <div className={styles.taskHeader}>
-            <div>({doings.length}) Doing</div>
-            <div>p</div>
+            <div className={styles.taskTitle}>
+              <i>({doings.length})</i> Doing
+            </div>
+            <div className={styles.AddTaskIcon}>
+              <FontAwesomeIcon icon={faPlus} />
+            </div>
           </div>
           {doings.map((todo) => (
             <TaskTemp key={todo.id} title={todo.title} />
           ))}
-          <div className={`${styles.statusBar} ${styles.yellow}`} />
+          {/* <div className={`${styles.statusBar} ${styles.yellow}`} /> */}
         </div>
         <div className={styles.tasks}>
           <div className={styles.taskHeader}>
-            <div>({dones.length}) Done</div>
-            <div>p</div>
+            <div className={styles.taskTitle}>
+              <i>({dones.length})</i> Done
+            </div>
+            <div className={styles.AddTaskIcon}>
+              <FontAwesomeIcon icon={faPlus} />
+            </div>
           </div>
           {dones.map((todo) => (
             <TaskTemp key={todo.id} title={todo.title} />
           ))}
-          <div className={`${styles.statusBar} ${styles.green}`} />
+          {/* <div className={`${styles.statusBar} ${styles.green}`} /> */}
         </div>
       </div>
     </>

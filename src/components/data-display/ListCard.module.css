@@ -1,13 +1,33 @@
 .container {
+  width: 265px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
   gap: 20px;
   position: relative;
-  padding: 1rem;
+  padding: 1rem 1.2rem;
   box-sizing: content-box;
-  background-color: aliceblue;
+  background-color: #f5f5f5;
+  transition: background-color 0.1s ease-in;
+}
+
+.container:not(:hover) .settingIcon,
+.container:not(:hover) .dragdropIcon {
+  transition: all 0.1s linear;
+  opacity: 0;
+}
+
+.container:hover .settingIcon,
+.container:hover .dragdropIcon {
+  transition: all 0.1s linear;
+  opacity: 1;
+}
+
+.container:hover {
+  background-color: #eaeaea;
+  transition: background-color 0.1s ease-in;
 }
 
 .header {
@@ -15,7 +35,11 @@
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
-  background-color: aqua;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .taskHeader {
@@ -23,19 +47,36 @@
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
-  background-color: pink;
 }
 
 .tasks {
+  font-size: 0.9rem;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: aquamarine;
 }
 
 .task {
   padding: 0.7rem 1rem;
-  background-color: azure;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
+  background-color: white;
+
+  transition: box-shadow 0.1s ease-in;
+}
+
+.task:hover {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.16), 0 2px 9px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.1s ease-in;
+}
+
+.AddTaskIcon {
+  cursor: pointer;
+}
+
+.taskTitle {
+  color: #444;
 }
 
 .green {
@@ -52,6 +93,27 @@
 
 .dragdropIcon {
   position: absolute;
-  right: 0;
+  cursor: all-scroll;
+  right: 3px;
   top: 1rem;
+}
+
+.dragdropIcon:hover svg path,
+.settingIcon:hover svg path {
+  transition: fill 0.1s ease-in;
+  fill: #111;
+}
+
+.settingIcon {
+  cursor: pointer;
+}
+
+.dragdropIcon svg path {
+  width: 55px;
+}
+
+.settingIcon svg path,
+.dragdropIcon svg path {
+  transition: fill 0.1s ease-in;
+  fill: #aaa;
 }
