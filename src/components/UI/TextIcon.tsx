@@ -19,7 +19,7 @@ const TextIcon = (props: PropType) => {
         {props.rightIcons &&
           props.rightIcons.map((icon) => (
             <FontAwesomeIcon
-              style={{ marginRight: props.rightMargins }}
+              style={{ marginLeft: props.rightMargins }}
               className={styles.right}
               key={icon.toString()}
               icon={icon}

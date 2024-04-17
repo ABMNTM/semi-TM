@@ -5,3 +5,9 @@
 .left {
   margin-right: 10px;
 }
+
+.content {
+  display: flex;
+  justify-self: flex-start;
+  align-items: center;
+}
