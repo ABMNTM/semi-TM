@@ -1,5 +1,8 @@
 .avatar {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 35px;
   height: 35px;
   color: #eee;
@@ -12,8 +15,8 @@
 
 .dot {
   position: absolute;
-  left: 3px;
-  bottom: 3px;
+  left: 2px;
+  bottom: 2px;
   width: 10px;
   height: 10px;
   border-radius: 50%;

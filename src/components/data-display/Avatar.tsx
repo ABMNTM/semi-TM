@@ -17,13 +17,16 @@ const Avatar = (props: propType) => {
       style={{ backgroundColor: props.color }}
       className={`${styles.avatar} ${styles.border}`}
     >
-      {props.name}
+      <div>{props.name}</div>
     </div>
   );
   const dot = (
-    <div style={{ backgroundColor: props.color }} className={styles.avatar}>
+    <div
+      style={{ backgroundColor: props.color, color: "black" }}
+      className={styles.avatar}
+    >
       <div className={styles.dot}></div>
-      {props.name}
+      <div>{props.name}</div>
     </div>
   );
 
