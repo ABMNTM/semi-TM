@@ -1,17 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import styles from "./Switch.module.css";
 import { faArchive } from "@fortawesome/free-solid-svg-icons";
 
 const Switch = (props: any) => {
-  // not stay at any mode
+  const [switchMode, setSwitchMode] = useState(false); //false means right
+
+  const HandleSwitch = () => {
+    setSwitchMode((lastMode) => !lastMode);
+  };
+
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles.switchBar}></div>
-        <div className={styles.switchLever}>
-          <FontAwesomeIcon icon={faArchive} width={20} height={20} />
+      <div className={styles.container} onClick={HandleSwitch}>
+        <div
+          className={
+            styles.switchBar +
+            " " +
+            (switchMode ? styles.enable : styles.disable)
+          }
+        >
+          <div
+            className={
+              styles.switchLever + " " + (switchMode && styles.enableLever)
+            }
+          >
+            <FontAwesomeIcon icon={faArchive} width={20} height={20} />
+          </div>
         </div>
       </div>
     </>
