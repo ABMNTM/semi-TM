@@ -4,15 +4,26 @@ import Image from "next/image";
 import styles from "./Avatar.module.css";
 
 interface propType {
-  status: string;
+  // hasProfilePic: boolean;
+  // src?: string;
+  color: string; // required at next phases
+  name: string;
+  status?: string;
 }
 
 const Avatar = (props: propType) => {
-  const border = <div className={`${styles.avatar} ${styles.border}`}>AB</div>;
-
+  const border = (
+    <div
+      style={{ backgroundColor: props.color }}
+      className={`${styles.avatar} ${styles.border}`}
+    >
+      {props.name}
+    </div>
+  );
   const dot = (
-    <div className={styles.avatar}>
-      <div className={styles.dot}></div>AB
+    <div style={{ backgroundColor: props.color }} className={styles.avatar}>
+      <div className={styles.dot}></div>
+      {props.name}
     </div>
   );
 
