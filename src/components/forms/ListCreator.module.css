@@ -1,0 +1,47 @@
+.container {
+  min-width: 330px;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 25px;
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  background-color: #f2f2f2;
+  color: #aaa;
+  font-size: medium;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.containerOnFocus {
+  background-color: #fff;
+}
+
+.container:hover {
+  transition: all 0.15s;
+  border-color: #cfcfcf;
+  color: #999;
+}
+
+#ListCreator {
+  direction: rtl;
+  padding: 10px 25px 10px 0;
+  background-color: inherit;
+  border: none;
+}
+
+#ListCreator::placeholder {
+  font-style: italic;
+  font-size: small;
+  color: #ccc;
+}
+
+#ListCreator:focus {
+  outline: none;
+}
+
+#plus {
+  font-weight: 700;
+  font-size: medium;
+}

@@ -1,122 +1,58 @@
-import React, { useEffect } from "react";
-import axios, { Axios, AxiosError } from "axios";
-import toast from "react-hot-toast";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ProjectCard from "@cmp/data-display/ProjectCard";
+import React, {
+  useEffect,
+  FC,
+  HTMLAttributes,
+  useContext,
+  useState,
+} from "react";
+import BoardCard from "@cmp/data-display/BoardCard";
+import BoardType from "../../types/BoardType";
+import {
+  faBarChart,
+  faBuilding,
+  faChevronDown,
+  faPlus,
+} from "@fortawesome/free-solid-svg-icons";
+import TextIcon from "@cmp/UI/TextIcon";
+import { SwitchCtx } from "../../contexts/SwitchContext";
 
 import styles from "./BoardContainer.module.css";
-import { faBuilding } from "@fortawesome/free-solid-svg-icons";
 
-interface projectType {
-  id: number;
-  name: string;
-  description: string;
-  date_created: Date;
+interface PropType extends HTMLAttributes<HTMLElement> {
+  boards: Array<BoardType>;
+  onCreate(BaseUrl: string, name: string): Promise<void>;
 }
 
-interface boardType {
-  id: number;
-  name: string;
-  description: string;
-  date_created: Date;
-  projects: Array<projectType>;
+interface EmptyBoardPropType {
+  msg: string;
 }
 
-const BoardContainer = () => {
-  const boards = (): Array<boardType> => {
-    // appearence design mode
-    return [
-      {
-        id: 1,
-        name: "test name",
-        description: "test desc",
-        date_created: new Date(),
-        projects: [
-          {
-            id: 1,
-            name: "taskulu",
-            description: "test",
-            date_created: new Date(),
-          },
-          {
-            id: 3,
-            name: "Azemubu",
-            description: "test",
-            date_created: new Date(),
-          },
-        ],
-      },
-      {
-        id: 2,
-        name: "test name",
-        description: "test desc",
-        date_created: new Date(),
-        projects: [
-          {
-            id: 14,
-            name: "udemy",
-            description: "test",
-            date_created: new Date(),
-          },
-        ],
-      },
-      {
-        id: 3,
-        name: "test name",
-        description: "test desc",
-        date_created: new Date(),
-        projects: [
-          {
-            id: 4,
-            name: "taskulu",
-            description: "test",
-            date_created: new Date(),
-          },
-        ],
-      },
-    ];
-    // try {
-    //   const token = localStorage.getItem("access");
-    //   if (token) {
-    //     const response = await axios.get("http://localhost:8000/board/", {
-    //       headers: {
-    //         Authorization: "Bearer " + localStorage.getItem("access"),
-    //       },
-    //     });
-    //     return await response.data;
-    //   } else {
-    //     console.log(token);
-    //   }
-    // } catch (e: unknown) {
-    //   const knownErr = e as AxiosError;
-    //   console.log(knownErr);
-    //   // toast.error("dummy error");
-    // }
-  };
+export const EmptyBoard: FC<EmptyBoardPropType> = (props) => {
+  return <div className={styles.EmptyBoard}>{props.msg}</div>;
+};
 
-  const data = boards();
+const BoardContainer: FC<PropType> = (props) => {
+  const [visualBoards, setVisualBoards] = useState<Array<BoardType>>([]); // to define which boards will be shown.
+
+  const { isActive: isActive } = useContext(SwitchCtx);
+
+  useEffect(() => {
+    setVisualBoards(
+      props.boards.filter((item) => item.isArcheved === isActive)
+    );
+  }, [isActive, props.boards]);
 
   return (
     <div className={styles.manager}>
       <div className={styles.container}>
-        {data.map((item) => (
-          <div key={item.id}>
-            <div key={item.id} className={styles.boardHeader}>
-              <div className={styles.boardTitle}>
-                <FontAwesomeIcon icon={faBuilding} width={20} height={20} />
-                <h3 className={styles.title}>{item.name}</h3>
-              </div>
-              <button className={styles.createProject}>ایجاد پروژه</button>
-              <div className={styles.setting}></div>
-              <div className={styles.analyse}></div>
-            </div>
-            <div key={item.id} className={styles.projectContainer}>
-              {item.projects.map((item) => (
-                <ProjectCard key={item.id} title={item.name} />
-              ))}
-            </div>
-          </div>
-        ))}
+        {props.boards.length === 0 ? (
+          <EmptyBoard msg="لطفا برای شروع یک سازمان بسازید" />
+        ) : (
+          visualBoards.map((item) => <BoardCard key={item.id} data={item} />)
+        )}
+        <button className={styles.PageButton + " " + styles.createBoard}>
+          <TextIcon leftIcons={[faPlus]} text="ایجاد سازمان" />
+        </button>
       </div>
     </div>
   );

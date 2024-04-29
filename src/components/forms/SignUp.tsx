@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./auth.module.css";
 import { validateEmail } from "../../helpers/helpers";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/router";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
+import { baseURL } from "../../helpers/axios";
 
 interface propsType {
   onToggle: () => void;
@@ -25,6 +26,8 @@ const SignUp = (props: propsType) => {
 
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
+  const [formIsValid, setFormIsValid] = useState(false);
+
   // handle changes
   let utime: NodeJS.Timeout;
   const HandleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,6 +40,8 @@ const SignUp = (props: propsType) => {
           return "نام کاربری الزامی است";
         } else if (userInput.length < 4) {
           return "نام کاربری باید حداقل 4 کاراکتر باشد";
+        } else if (userInput.length > 22) {
+          return "نام کاربری باید حداکثر ۲۲ کاراکتر باشد";
         } else {
           return "";
         }
@@ -96,46 +101,46 @@ const SignUp = (props: propsType) => {
     }, 300);
   };
 
+  // form validation
+  useEffect(() => {
+    setFormIsValid(
+      usernameError.length === 0 &&
+        emailError.length === 0 &&
+        passwordError.length === 0 &&
+        confirmPasswordError.length === 0
+    );
+  }, [usernameError, emailError, passwordError, confirmPasswordError]);
+
   // submit handle
   const HandleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (
-      usernameError.length === 0 &&
-      emailError.length === 0 &&
-      passwordError.length === 0 &&
-      confirmPasswordError.length === 0
-    ) {
+
+    if (formIsValid) {
       // user create
       const userData = {
         username: username,
         email: email,
         password: password,
       };
-      // console.log(userData);
+
       axios
-        .post("http://localhost:8000/account/create/", userData)
-        .then((response) => {
-          console.log(response);
-          router.replace("/auth");
+        .post(baseURL + "/account/create/", userData)
+        .then(() => {
+          toast.success(".عملیات عضویت با موفقیت انجام شد", {
+            duration: 4750,
+          });
+          setTimeout(function () {
+            toast("اکنون می توانید وارد شوید", { duration: 4000 });
+          }, 750);
         })
         .catch((error: AxiosError) => {
-          console.log(error);
-          if (error.code === "ERR_BAD_REQUEST") {
-            toast.error("Demo: نام کاربری تکراری می باشد", {
-              duration: 5000,
-              position: "top-center",
-              style: {
-                fontFamily: "IRANsans",
-              },
-            });
-          }
+          toast.error(".خطایی رخ داده است");
         });
     }
   };
 
   return (
     <div>
-      <Toaster />
       <h2 className={styles.title} dir="rtl">
         عضویت
       </h2>

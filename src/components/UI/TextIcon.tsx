@@ -4,7 +4,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 import styles from "./TextIcon.module.css";
 
-interface PropType extends HTMLAttributes<HTMLDivElement> {
+export interface TextIconPropType extends HTMLAttributes<HTMLDivElement> {
   rightIcons?: Array<IconProp>;
   leftIcons?: Array<IconProp>;
   text: string;
@@ -12,9 +12,21 @@ interface PropType extends HTMLAttributes<HTMLDivElement> {
   leftMargins?: string;
 }
 
-const TextIcon = (props: PropType) => {
+const TextIcon = (props: TextIconPropType) => {
   return (
-    <>
+    <div dir={props.dir} className={styles.container + " " + props.className}>
+      {props.leftIcons &&
+        props.leftIcons.map((icon) => (
+          <FontAwesomeIcon
+            style={{ marginRight: props.leftMargins }}
+            className={styles.left}
+            key={icon.toString()}
+            icon={icon}
+          />
+        ))}
+
+      {props.text}
+
       <div className={styles.content}>
         {props.rightIcons &&
           props.rightIcons.map((icon) => (
@@ -25,20 +37,8 @@ const TextIcon = (props: PropType) => {
               icon={icon}
             />
           ))}
-
-        {props.text}
-
-        {props.leftIcons &&
-          props.leftIcons.map((icon) => (
-            <FontAwesomeIcon
-              style={{ marginRight: props.leftMargins }}
-              className={styles.left}
-              key={icon.toString()}
-              icon={icon}
-            />
-          ))}
       </div>
-    </>
+    </div>
   );
 };
 

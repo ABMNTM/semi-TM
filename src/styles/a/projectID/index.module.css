@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  flex-flow: row-reverse nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  direction: ltr;
+}
+
+.leftSide {
+  margin-right: 225px;
+  width: calc(100vw - 225px);
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+
+.nav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f2f2f2;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+  width: 100%;
+  height: 40px;
+}
+
+.NAVpagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.NAVaccount {
+  direction: rtl;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 20px;
+}
+
+.taskContainer {
+  height: calc(100% - 43px);
+  overflow-x: auto;
+  display: flex;
+  flex-flow: row-reverse nowrap;
+  margin-top: 3px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}

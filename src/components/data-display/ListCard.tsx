@@ -18,6 +18,7 @@ interface TaskTempType {
 }
 
 interface propType {
+  key?: number | string | undefined;
   title: string;
   tasks: Array<taskType>;
 }
@@ -38,7 +39,7 @@ const ListCard = (props: propType) => {
           <div className={styles.dragdropIcon}>
             <FontAwesomeIcon icon={faGripVertical} width={"9px"} />
           </div>
-          <h3 className={styles.title}>{props.title}</h3>
+          <h5 className={styles.title}>{props.title}</h5>
           <div className={styles.settingIcon}>
             <FontAwesomeIcon icon={faGear} />
           </div>

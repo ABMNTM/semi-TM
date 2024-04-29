@@ -1,29 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  FC,
+  MouseEventHandler,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import styles from "./Switch.module.css";
 import { faArchive } from "@fortawesome/free-solid-svg-icons";
+import { SwitchCtx } from "../../contexts/SwitchContext";
 
-const Switch = (props: any) => {
-  const [switchMode, setSwitchMode] = useState(false); //false means right
+interface PropType {}
 
-  const HandleSwitch = () => {
-    setSwitchMode((lastMode) => !lastMode);
-  };
+const Switch: FC<PropType> = () => {
+  const ctx = useContext(SwitchCtx);
 
   return (
     <>
-      <div className={styles.container} onClick={HandleSwitch}>
+      <div className={styles.container} onClick={ctx.onSwitch}>
         <div
           className={
             styles.switchBar +
             " " +
-            (switchMode ? styles.enable : styles.disable)
+            (ctx.isActive ? styles.enable : styles.disable)
           }
         >
           <div
             className={
-              styles.switchLever + " " + (switchMode && styles.enableLever)
+              styles.switchLever + " " + (ctx.isActive && styles.enableLever)
             }
           >
             <FontAwesomeIcon icon={faArchive} width={20} height={20} />

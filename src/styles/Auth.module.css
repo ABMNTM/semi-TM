@@ -118,3 +118,13 @@
   font-weight: 400;
   margin: 0.3rem 14vw 0 0;
 }
+
+@media (max-width: 770px) {
+  .aside {
+    display: none;
+  }
+
+  .alongmain {
+    width: 100vw;
+  }
+}

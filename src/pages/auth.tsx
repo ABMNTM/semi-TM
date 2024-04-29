@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
         <title>احراز هویت | تسکولو</title>
       </Head>
       <main className={styles.main}>

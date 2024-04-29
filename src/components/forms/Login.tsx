@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import axios, { Axios } from "axios";
-
-import styles from "./auth.module.css";
+import axios, { AxiosError } from "axios";
+import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
+import { accessTokenKey, baseURL, refreshTokenKey } from "../../helpers/axios";
+import { URL } from "url";
+
+import styles from "./auth.module.css";
 
 interface propsType {
   onToggle: () => void;
@@ -13,14 +16,15 @@ const Login = (props: propsType) => {
   // router
   const router = useRouter();
   // states
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
 
   const [password, setPassword] = useState("");
 
+  // validations and state updates
   let etime: NodeJS.Timeout;
   const HandleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value;
-    setEmail(input);
+    setUsername(input);
   };
 
   let ptime: NodeJS.Timeout;
@@ -32,20 +36,26 @@ const Login = (props: propsType) => {
   // handle submit
   const HandleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     try {
-      const res = await axios.post("http://localhost:8000/token/obtain/", {
-        username: email, // necessary to config simpleJWT by email instead of username
+      const res = await axios.post(baseURL + "/token/obtain/", {
+        username: username, // necessary to config simpleJWT by email instead of username
         password: password,
       });
-      localStorage.setItem("access", res.data.access);
-      localStorage.setItem("refresh", res.data.refresh);
-      router.push("a/");
+
+      Cookies.set(accessTokenKey, res.data.access);
+      Cookies.set(refreshTokenKey, res.data.refresh);
+
+      router.push("/a");
     } catch (e) {
-      // error handling ....
-      console.log(e);
-      toast.error("some dummy error", {
-        duration: 4000,
-      });
+      const error = e as AxiosError;
+
+      console.log(error);
+      if (error.response && error.response.status === 401) {
+        toast.error("نام کاربری یا گذرواژه نادرست است");
+      } else {
+        toast.error("خطایی وجود دارد");
+      }
     }
   };
 

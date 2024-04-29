@@ -1,0 +1,77 @@
+.container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 225px;
+  color: #c9d5de;
+  background-color: #1c334e;
+  direction: rtl;
+  position: fixed;
+}
+
+.main {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  height: calc(100vh - 40px);
+}
+
+.home {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 0.9rem;
+  padding: 0 15px;
+  height: 40px;
+  background-color: #14263c;
+}
+
+.asideList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 15px 0 15px 5px;
+  gap: 15px;
+  background-color: #1c334e;
+}
+
+.asideList > * {
+  padding-right: 15px;
+}
+
+.asideList a svg {
+  margin-left: 10px;
+}
+
+.asideList .ListChats {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ChatList {
+  padding: 0.5rem;
+  font-size: small;
+}
+
+.Footer {
+  background-color: #14263c;
+  font-size: small;
+  padding: 15px;
+}
+
+.selectable:hover {
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #14263c;
+}
+
+.selected {
+  background-color: #00695c;
+  border-radius: 4px;
+  /* padding:; */
+}

@@ -49,16 +49,20 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: rgb(var(--foreground-rgb)) !important;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+ul {
+  list-style-type: none !important;
 }
 
 @media (prefers-color-scheme: dark) {
   html {
-    color-scheme: dark;
+    color-scheme: dark !important;
   }
 }

@@ -1,0 +1,70 @@
+.boardHeader {
+  display: flex;
+  flex-flow: row-reverse nowrap;
+  justify-content: flex-start;
+  gap: 5px;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+
+.boardTitle {
+  color: #212121;
+  font-weight: 700;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.PageButton {
+  display: flex;
+  align-items: center;
+  font-size: smaller;
+  background-color: inherit;
+  border-radius: 2px;
+  transition: background-color 0.2s;
+  padding: 0.5rem 1rem;
+  cursor: default;
+  border: none;
+}
+
+.PageButton:hover {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+  transition: background-color 0.2s;
+}
+
+.headerButton {
+  font-size: x-small;
+  padding: 0.3rem 0.8rem !important;
+  color: #0d8aee;
+}
+
+.headerButton:hover,
+.headerButton:active {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+  color: #0d8aee;
+}
+
+.analyse {
+  color: #449d48;
+}
+
+.createProject {
+  border: none;
+}
+
+.projectContainer {
+  display: flex;
+  flex-flow: row-reverse wrap;
+  gap: 25px;
+}
+
+.dropdownMenu > * > * {
+  font-size: small;
+  justify-content: space-between;
+}
+
+.closeBoard {
+  color: rgb(206, 37, 37);
+}
