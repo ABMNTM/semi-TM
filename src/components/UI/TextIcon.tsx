@@ -7,6 +7,7 @@ import styles from "./TextIcon.module.css";
 export interface TextIconPropType extends HTMLAttributes<HTMLDivElement> {
   rightIcons?: Array<IconProp>;
   leftIcons?: Array<IconProp>;
+  IconSize?: string;
   text: string;
   rightMargins?: string;
   leftMargins?: string;
@@ -18,7 +19,7 @@ const TextIcon = (props: TextIconPropType) => {
       {props.leftIcons &&
         props.leftIcons.map((icon) => (
           <FontAwesomeIcon
-            style={{ marginRight: props.leftMargins }}
+            style={{ marginRight: props.leftMargins, fontSize: props.IconSize }}
             className={styles.left}
             key={icon.toString()}
             icon={icon}
@@ -31,7 +32,10 @@ const TextIcon = (props: TextIconPropType) => {
         {props.rightIcons &&
           props.rightIcons.map((icon) => (
             <FontAwesomeIcon
-              style={{ marginLeft: props.rightMargins }}
+              style={{
+                marginLeft: props.rightMargins,
+                fontSize: props.IconSize,
+              }}
               className={styles.right}
               key={icon.toString()}
               icon={icon}
