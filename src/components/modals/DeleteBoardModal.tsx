@@ -3,7 +3,7 @@ import { Modal } from "react-bootstrap";
 
 import styles from "./DeleteBoardModal.module.css";
 import TextInput from "@cmp/UI/TextInput";
-import { ModalType } from "@cmp/UI/Modal";
+import { ModalType } from "./types";
 
 interface BoardDeletePropType extends ModalType {
   boardName: string;

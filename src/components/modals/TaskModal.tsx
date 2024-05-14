@@ -21,7 +21,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import TextIcon from "@cmp/UI/TextIcon";
 
-import { ModalType } from "@cmp/UI/Modal";
+import { ModalType } from "./types";
 import TextInput from "@cmp/UI/TextInput";
 import Switch from "@cmp/UI/Switch";
 
