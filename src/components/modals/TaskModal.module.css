@@ -1,0 +1,76 @@
+.modal-backdrop {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.modal-content {
+  min-width: 730px;
+  min-height: 80px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.Header {
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: none;
+}
+
+.LeftHeader {
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.RightHeader {
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.OperationList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 5px;
+  box-sizing: content-box;
+  width: 200px;
+  padding: 10px;
+}
+
+.OperationList > div:not(.hr) {
+  padding: 0.4rem 0.8rem;
+  margin: 3px 5px;
+  display: flex;
+  justify-content: flex-end;
+  width: 190px;
+  color: #212121;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.OperationList > div:not(.hr):hover {
+  background-color: #e0e0e0;
+}
+
+.OperationList > div:not(.hr):active {
+  background-color: #d3d3d3;
+  transition: none;
+}
+
+/* .OperationListObj {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 10px;
+} */
+
+.OperationList .hr {
+  width: 100%;
+  height: 0;
+  border-top: 1px solid #ececec;
+}
