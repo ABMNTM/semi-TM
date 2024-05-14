@@ -1,0 +1,51 @@
+.container {
+  direction: rtl;
+  display: flex;
+  justify-content: flex-start;
+  background-color: white;
+  align-items: center;
+  padding: 0.3rem 0.5rem;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  transition: border-color 0.1s;
+}
+
+.container:hover {
+  transition: all 0.1s;
+  border-color: #aaa;
+}
+
+.containerOnFocus {
+  border-color: #00bfff !important;
+}
+
+.container:hover #TextInput::placeholder {
+  color: #888;
+}
+
+#TextInput {
+  color: #111;
+  border: none;
+  background-color: white;
+  width: 16rem;
+}
+
+#TextInput::placeholder {
+  font-style: italic;
+  color: #aaa;
+  transition: all 0.1s;
+}
+
+#TextInput:focus {
+  outline: none;
+}
+
+#TextInput:focus::placeholder {
+  transition: all 0.1s;
+  color: #d9d9d9 !important;
+}
+
+#magnify {
+  color: #aaa;
+  cursor: pointer;
+}
