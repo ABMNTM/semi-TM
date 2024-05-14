@@ -4,7 +4,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 import styles from "./TextInput.module.css";
 
-interface PropType {
+interface PropType extends HTMLAttributes<HTMLDivElement> {
   placeholder?: string;
   onChange(e: ChangeEvent<HTMLInputElement>): void;
   Icon?: IconProp;
@@ -22,7 +22,6 @@ const TextInput = (props: PropType) => {
   };
 
   return (
-    <>
       <div
         className={
           styles.container + " " + (focused && styles.containerOnFocus)
@@ -41,7 +40,6 @@ const TextInput = (props: PropType) => {
           <FontAwesomeIcon icon={props.Icon} id={styles.magnify} />
         )}
       </div>
-    </>
   );
 };
 

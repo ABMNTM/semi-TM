@@ -4,15 +4,16 @@
   justify-content: flex-start;
   background-color: white;
   align-items: center;
-  padding: 0.3rem 0.5rem;
+  padding: 0.25rem 0.4rem;
   border-radius: 2px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
+  font-size: small;
   transition: border-color 0.1s;
 }
 
 .container:hover {
   transition: all 0.1s;
-  border-color: #aaa;
+  border-color: #bbb;
 }
 
 .containerOnFocus {
@@ -20,7 +21,7 @@
 }
 
 .container:hover #TextInput::placeholder {
-  color: #888;
+  color: #333;
 }
 
 #TextInput {
@@ -32,7 +33,7 @@
 
 #TextInput::placeholder {
   font-style: italic;
-  color: #aaa;
+  color: #555;
   transition: all 0.1s;
 }
 
