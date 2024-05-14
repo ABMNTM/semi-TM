@@ -14,7 +14,7 @@ interface PropType {
   children: ReactNode;
 }
 
-const SwitchContext: FC<PropType> = ({ children }) => {
+const SProvider: FC<PropType> = ({ children }) => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const onTuggle = () => {
     setIsActive((ps) => !ps);
@@ -26,4 +26,4 @@ const SwitchContext: FC<PropType> = ({ children }) => {
   );
 };
 
-export default SwitchContext;
+export default SProvider;
