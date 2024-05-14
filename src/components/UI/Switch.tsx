@@ -10,10 +10,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./Switch.module.css";
 import { faArchive } from "@fortawesome/free-solid-svg-icons";
 import { SwitchCtx } from "../../contexts/SwitchContext";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-interface PropType {}
+interface PropType {
+  icon?: IconProp;
+}
 
-const Switch: FC<PropType> = () => {
+const Switch: FC<PropType> = ({icon}) => {
   const ctx = useContext(SwitchCtx);
 
   return (
@@ -31,7 +34,8 @@ const Switch: FC<PropType> = () => {
               styles.switchLever + " " + (ctx.isActive && styles.enableLever)
             }
           >
-            <FontAwesomeIcon icon={faArchive} width={20} height={20} />
+            { icon &&
+              <FontAwesomeIcon icon={icon} width={20} height={20} />}
           </div>
         </div>
       </div>
