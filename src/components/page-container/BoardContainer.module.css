@@ -10,6 +10,7 @@
   align-items: flex-end;
   overflow-y: auto;
   gap: 20px;
+  box-sizing: content-box;
   max-width: 960px;
   margin-left: auto;
   margin-right: auto;

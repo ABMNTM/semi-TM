@@ -1,0 +1,14 @@
+.Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    border: 2px solid #dfdfdf;
+    text-align: right;
+    height: 40px;
+    font-size: small;
+}
+
+.Icon {
+    font-size: x-small;
+}

@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.Input {
+    width: calc(330px - 2.4rem);
+    padding: 5px;
+    border: 2px solid #81d4fa;
+}
+
+.Input::placeholder {
+    font-style: italic;
+    font-size: small;
+    color: #aaa;
+}
+
+.Input:focus {
+    outline: none;
+    border-color: #03a9f4;
+}
+
+.ConfirmContainer {
+    font-size: xx-small;
+}
+
+.CancellBtn {
+    margin-right: 5px;
+}

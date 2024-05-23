@@ -16,9 +16,13 @@ const Login = (props: propsType) => {
   // router
   const router = useRouter();
   // states
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState<string>();
 
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState<string>();
+
+  const [keepLogedIn, setKeepLogedIn] = useState<boolean>(false);
+
+  const [loading, setLoading] = useState<boolean>(false);
 
   // validations and state updates
   let etime: NodeJS.Timeout;
@@ -33,6 +37,10 @@ const Login = (props: propsType) => {
     setPassword(input);
   };
 
+  const HandleKeepIn = (e: any) => {
+    setKeepLogedIn(ps => !ps);
+  }
+
   // handle submit
   const HandleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,8 +51,14 @@ const Login = (props: propsType) => {
         password: password,
       });
 
-      Cookies.set(accessTokenKey, res.data.access);
-      Cookies.set(refreshTokenKey, res.data.refresh);
+      const days = 30;
+
+      const expireTime = new Date( (new Date().getTime()) + (days * 24 * 60 * 60 * 1000) )
+      
+      const expireAttr = (keepLogedIn) ? {expires: expireTime} : {}
+
+      Cookies.set(accessTokenKey, res.data.access, expireAttr);
+      Cookies.set(refreshTokenKey, res.data.refresh, expireAttr);
 
       router.push("/a");
     } catch (e) {
@@ -87,7 +101,7 @@ const Login = (props: propsType) => {
         </div>
         <div className={styles["form-control"]}>
           <label className={styles.stay} htmlFor="stay">
-            <input type="checkbox" name="stay" />
+            <input onChange={HandleKeepIn} type="checkbox" name="stay" />
             من را برای ۳۰ روز به یاد داشته باش
           </label>
         </div>

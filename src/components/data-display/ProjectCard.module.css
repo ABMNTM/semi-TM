@@ -5,7 +5,7 @@
   align-items: stretch;
   background-color: white;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
-  width: 300px;
+  width: 290px;
   height: 150px;
   transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
 }
@@ -31,14 +31,18 @@
   padding-top: 6px;
 }
 
-.header svg path {
-  fill: #aaa;
-}
-
 .body {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
   padding: 0 1rem;
   height: 50%;
+}
+
+.header .stared {
+  color: #0d8aee;
+}
+
+.header .notStared {
+  color: #aaa;
 }

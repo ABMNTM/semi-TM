@@ -15,13 +15,13 @@ export interface TextIconPropType extends HTMLAttributes<HTMLDivElement> {
 
 const TextIcon = (props: TextIconPropType) => {
   return (
-    <div dir={props.dir} className={styles.container + " " + props.className}>
+    <div dir={props.dir} className={props.className + " " + styles.container}>
       {props.leftIcons &&
-        props.leftIcons.map((icon) => (
+        props.leftIcons.map((icon, index) => (
           <FontAwesomeIcon
             style={{ marginRight: props.leftMargins, fontSize: props.IconSize }}
             className={styles.left}
-            key={icon.toString()}
+            key={index}
             icon={icon}
           />
         ))}
@@ -30,14 +30,14 @@ const TextIcon = (props: TextIconPropType) => {
 
       <div className={styles.content}>
         {props.rightIcons &&
-          props.rightIcons.map((icon) => (
+          props.rightIcons.map((icon, index) => (
             <FontAwesomeIcon
               style={{
                 marginLeft: props.rightMargins,
                 fontSize: props.IconSize,
               }}
               className={styles.right}
-              key={icon.toString()}
+              key={index}
               icon={icon}
             />
           ))}

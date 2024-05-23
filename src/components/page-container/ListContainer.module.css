@@ -1,0 +1,10 @@
+.taskContainer {
+    height: calc(100% - 43px);
+    overflow-x: auto;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    margin-top: 3px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  

@@ -5,6 +5,12 @@
   src: url("../../public/assets/fonts/IRANSans.woff2");
 }
 
+@font-face {
+  font-family: IRANsans;
+  src: url("../../public/assets/fonts/IRANSansB.ttf");
+  font-weight: bold;
+}
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -65,4 +71,63 @@ ul {
   html {
     color-scheme: dark !important;
   }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.button {
+  border: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 3px;
+}
+
+.btn-primary-solid {
+  color: white ;
+  background-color: #03a9f4;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24) !important;
+}
+
+.btn-primary-solid:hover {
+  background-color: #14b4fc ;
+}
+
+.btn-primary-solid:active {
+  background-color: #039fe5 ;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16), 0 3px 10px rgba(0, 0, 0, 0.23) !important;
+}
+
+.btn-primary-glassy {
+  color: #0d8aee ;
+  background-color: inherit ;
+}
+
+.btn-primary-glassy:hover {
+  background-color: #e1f5fe ;
+}
+
+.btn-primary-glassy:active {
+  background-color: #d2f0fe ;
+}
+
+.btn-secondary-glassy {
+  color: #515151 ;
+  background-color: inherit ;
+}
+
+.btn-secondary-glassy:hover {
+  background-color: #e0e0e0 ;
+}
+
+.btn-secondary-glassy:active {
+  background-color: #d8d8d8 ;
 }

@@ -3,6 +3,7 @@
   flex-flow: column wrap;
   justify-content: flex-start;
   align-items: stretch;
+  direction: rtl;
   width: 225px;
   color: #c9d5de;
   background-color: #1c334e;
@@ -36,6 +37,12 @@
   padding: 15px 0 15px 5px;
   gap: 15px;
   background-color: #1c334e;
+}
+
+.List {
+  display: flex;
+  justify-content: flex-start;
+  padding: 3px 5px;
 }
 
 .asideList > * {

@@ -5,9 +5,12 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import styles from "./TextInput.module.css";
 
 interface PropType extends HTMLAttributes<HTMLDivElement> {
+  inputClassName?: string;
+  iconClassName?: string;
   placeholder?: string;
   onChange(e: ChangeEvent<HTMLInputElement>): void;
   Icon?: IconProp;
+  name?: string;
 }
 
 const TextInput = (props: PropType) => {
@@ -24,20 +27,20 @@ const TextInput = (props: PropType) => {
   return (
       <div
         className={
-          styles.container + " " + (focused && styles.containerOnFocus)
+          props.className + ' '+ styles.container + " " + (focused ? styles.containerOnFocus : '')
         }
       >
         <input
           onFocus={HandleFocus}
           onBlur={HandleBlur}
           type="text"
-          name="search"
+          name={props.name}
           onChange={props.onChange}
-          id={styles.TextInput}
+          className={`${props.inputClassName} ${(props.Icon) ? styles.empty : styles.full} ${styles.TextInput}`}
           placeholder={props.placeholder}
         />
         {props.Icon && (
-          <FontAwesomeIcon icon={props.Icon} id={styles.magnify} />
+          <FontAwesomeIcon icon={props.Icon} className={props.iconClassName + ' ' + styles.magnify} />
         )}
       </div>
   );

@@ -1,103 +1,78 @@
-import React, { useEffect } from "react";
-import { useRouter } from "next/router";
+import React, { useContext, useEffect, useState } from "react";
 import Aside from "@cmp/page-container/Aside";
-import ListCard, { taskType } from "@cmp/data-display/ListCard";
-import SearchBar from "@cmp/forms/SearchBar";
+import TextInput from "@cmp/UI/TextInput";
 import Head from "next/head";
-
 import styles from "@sty/a/projectID/index.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGear, faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArchive,
+  faGear,
+  faMagnifyingGlass,
+  faPlus,
+} from "@fortawesome/free-solid-svg-icons";
 import Switch from "@cmp/UI/Switch";
 import Avatar from "@cmp/data-display/Avatar";
-import ListCreator from "@cmp/forms/ListCreator";
-
-type tasks = Array<taskType>;
+import { TaskModal } from "@cmp/modals/TaskModal/TaskModal";
+import { MCProvider, ModalContext } from "../../../contexts/ModalContext";
+import { ProjectProvider } from "../../../contexts/Projectcontext";
+import ListContainer from "@cmp/page-container/ListContainer";
+import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 
 interface propType {}
 
 const Page = (props: propType) => {
-  const router = useRouter();
-  const dummyTasks: tasks = [
-    {
-      id: 1,
-      title: "nonono ...",
-      status: "TD",
-    },
-    {
-      id: 2,
-      title: "yeayeayea ...",
-      status: "DI",
-    },
-    {
-      id: 4,
-      title: "ohohoh ...",
-      status: "TD",
-    },
-    {
-      id: 3,
-      title: "hahaha ...",
-      status: "DN",
-    },
-  ];
+  const router = useRouter()
+  const paramHandler = useSearchParams()
+  const ProjectID = router.query.projectID as string;
 
-  const projectDATA = [
-    {
-      id: 1,
-      name: "taskulu",
-      tasks: [...dummyTasks],
-    },
-    {
-      id: 2,
-      name: "پیش فرض",
-      tasks: [...dummyTasks],
-    },
-    {
-      id: 3,
-      name: "عازم",
-      tasks: [...dummyTasks],
-    },
-    {
-      id: 4,
-      name: "عازم",
-      tasks: [...dummyTasks],
-    },
-  ];
+  const Modals = () => {
+    const ctx = useContext(ModalContext);
+    return (
+      <>
+        <TaskModal show={ctx.show} onHide={ctx.onHide} />
+      </>
+    );
+  };
 
+  const projName = paramHandler.get("name");
+  
   return (
-    <>
-      <Head>
-        <title>تسکولو | taskulu</title>
-      </Head>
-      <div className={styles.container}>
-        <Aside projectName="پروژه پیش فرض" />
-        <div className={styles.leftSide}>
-          <nav className={styles.nav}>
-            <div className={styles.NAVaccount}>
-              <Switch />
-              <SearchBar placeholder="جستجو ..." />
-              <Avatar color="#995384" name="AB" status="dot" />
-            </div>
-            <div className={styles.NAVpagination}>
-              {/* از اقای شمس بپرس بزنی یا نه */}
-              <FontAwesomeIcon icon={faGear} />
-              <FontAwesomeIcon icon={faPlus} />
-              <div className={styles.DefaultPage}>
-                {"صفحه پیش فرض"}
-                {/* bottom blue */}
-                <div></div>
+    <MCProvider>
+      <ProjectProvider>
+        <Head>
+          <title>تسکولو | taskulu</title>
+        </Head>
+        <div className={styles.container}>
+          <Aside projectName={(projName === null) ? '' : projName} />
+          <div className={styles.leftSide}>
+            <nav className={styles.nav}>
+              <div className={styles.NAVaccount}>
+                <Switch icon={faArchive} />
+                <TextInput
+                  Icon={faMagnifyingGlass}
+                  onChange={() => {}}
+                  placeholder="جستجو ..."
+                />
+                <Avatar color="#995384" name="AB" status="dot" />
               </div>
-            </div>
-          </nav>
-          <main className={styles.taskContainer}>
-            {projectDATA.map((list) => (
-              <ListCard key={list.id} title={list.name} tasks={list.tasks} />
-            ))}
-            <ListCreator />
-          </main>
+              <div className={styles.NAVpagination}>
+                {/* از اقای شمس بپرس بزنی یا نه */}
+                <FontAwesomeIcon icon={faGear} />
+                <FontAwesomeIcon icon={faPlus} />
+                <div className={styles.DefaultPage}>
+                  {"صفحه پیش فرض"}
+                  {/* bottom blue */}
+                  <div></div>
+                </div>
+              </div>
+            </nav>
+            <ListContainer ProjectID={ ProjectID } />
+          </div>
         </div>
-      </div>
-    </>
+        <Modals />
+      </ProjectProvider>
+    </MCProvider>
   );
 };
 

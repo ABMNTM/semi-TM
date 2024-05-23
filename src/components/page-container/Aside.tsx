@@ -44,6 +44,7 @@ const Aside = (props: PropType) => {
       <div className={styles.home}>
         <Link href={"/a/"}>
           <TextIcon
+            style={{justifyContent: "flex-start"}}
             dir="ltr"
             rightMargins="5px"
             rightIcons={[faChevronRight, faHouse]}
@@ -63,12 +64,14 @@ const Aside = (props: PropType) => {
               (selectedField === "works" ? styles.selected : styles.selectable)
             }
           >
-            <TextIcon dir="ltr" rightIcons={[faTasks]} text="کارها" />
+            <TextIcon dir="ltr" style={{justifyContent: "flex-start"}} rightIcons={[faTasks]} text="کارها" />
           </div>
           <div
             onClick={HandleTimeLogSelection}
             className={
               styles.ListTimeLogs +
+              " " +
+              styles.List +
               " " +
               (selectedField === "timeLogs"
                 ? styles.selected
@@ -93,9 +96,11 @@ const Aside = (props: PropType) => {
                 <div
                   onClick={HandleChatSelection}
                   className={
-                    selectedField === "chat"
+                    styles.List +
+                    " " +
+                    (selectedField === "chat"
                       ? styles.selected
-                      : styles.selectable
+                      : styles.selectable)
                   }
                 >
                   <TextIcon

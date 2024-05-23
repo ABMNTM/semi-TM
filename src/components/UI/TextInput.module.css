@@ -24,29 +24,36 @@
   color: #333;
 }
 
-#TextInput {
+.TextInput {
   color: #111;
   border: none;
   background-color: white;
-  width: 16rem;
 }
 
-#TextInput::placeholder {
+.empty {
+  width: calc(100% - 1rem);
+}
+
+.full {
+  width: 100%;
+}
+
+.TextInput::placeholder {
   font-style: italic;
   color: #555;
   transition: all 0.1s;
 }
 
-#TextInput:focus {
+.TextInput:focus {
   outline: none;
 }
 
-#TextInput:focus::placeholder {
+.TextInput:focus::placeholder {
   transition: all 0.1s;
   color: #d9d9d9 !important;
 }
 
-#magnify {
+.icon {
   color: #aaa;
   cursor: pointer;
 }

@@ -1,0 +1,92 @@
+.dialog {
+    min-width: 360px;
+    max-width: 360px;
+}
+
+.modal-content {
+    width: 360px;
+    border: none;
+    box-sizing: content-box;
+    position: relative;
+    border-radius: 2px;
+    color: #212121;
+    box-shadow: 0 14px 45px rgba(0,0,0,.25),0 10px 18px rgba(0,0,0,.22);
+}
+
+.Header {
+    direction: rtl;
+    border: none;
+    padding: 15px;
+    box-sizing: content-box;
+}
+
+.Header:nth-child(1) {
+    margin-top: 10px;
+    margin-right: 4px;
+}
+
+.closeBtn {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    cursor: pointer;
+    font-size: large;
+    color: #858585;
+}
+
+.closeBtn:hover {
+    color: #212121;
+}
+
+.modal-content .formName {
+    border-width: 2px;
+    font-size: 1rem;
+    padding-right: .8rem;
+}
+
+.modal-content .formNameInput {
+    font-size: large;
+}
+
+.modal-content .formNameInput::placeholder {
+    color: black;
+    font-size: medium;
+}
+
+.boardSelection {
+    text-align: right;
+}
+
+.boardLbl {
+    font-size: small;
+}
+
+.Footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.LoadBtn {
+    margin-left: 8px;
+    font-size: small;
+    color: #2b2b2b;
+    padding: .55rem .75rem;
+    background-color: #ececec;
+}
+
+.Help {
+    font-size: large;
+    color: #757575;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.Help:hover {
+    color: #0c7cd5;
+}
+
+.Create {
+    font-size: small;
+    padding: .55rem .75rem !important;
+}
